@@ -1,0 +1,25 @@
+<div>
+<mdb-card>
+  <mdb-card-body [ngStyle]="{ background: getColor() }">
+    <mdb-card-title>
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <h4>{{ post.title }}</h4>
+          </div>
+          <div class="col date">
+            <h6>{{ post.created_at | date:'d MMMM y HH:mm'}}</h6>
+          </div>
+        </div>
+      </div>
+    </mdb-card-title>
+    <mdb-card-text>
+      {{ post.content }}
+    </mdb-card-text>
+    <div class="flex-row">
+      <button type="button" mdbBtn color="light-green" mdbWavesEffect (click)="post.like();"><span>Love it</span><span><mdb-icon fas icon="heart">></mdb-icon></span></button>
+      <button type="button" mdbBtn color="danger" mdbWavesEffect (click)="post.unlike();"><span>Don't love it</span><span><mdb-icon fas icon="heart-broken"></mdb-icon></span></button>
+    </div>
+  </mdb-card-body>
+</mdb-card>
+</div>
