@@ -1,5 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Post } from '../post'; 
+import { Subscription } from 'rxjs';
+
+
+import { Post } from '../models/post.model'; 
+import { PostService } from '../services/post.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -9,11 +14,28 @@ import { Post } from '../post';
 })
 export class PostListComponent implements OnInit {
 
-  @Input() postsList: Post[];
+  posts:Post[];
+  postsSubscription: Subscription;
 
-  constructor() { }
+  constructor(
+    private postsService: PostService
+    ) {
+   }
 
   ngOnInit() {
+    this.postsSubscription = this.postsService.postsSubject.subscribe(
+      (posts: Post[]) => {
+        this.posts = posts;
+      }
+    );
+    this.postsService.emitPosts();
   }
 
+  onDeletePost(post: Post) {
+    //this.postsService.removeBook(post);
+  }
+  
+  ngOnDestroy() {
+    this.postsSubscription.unsubscribe();
+  }
 }

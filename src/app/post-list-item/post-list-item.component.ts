@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Post } from '../post';
+import { Post } from '../models/post.model';
+import { PostService } from '../services/post.service';
 
 
 @Component({
@@ -11,7 +12,9 @@ export class PostListItemComponent implements OnInit {
 
   @Input() post: Post;
 
-  constructor() { }
+  constructor(
+    private postService: PostService,
+  ) { }
 
   ngOnInit() {
   }
@@ -22,6 +25,20 @@ export class PostListItemComponent implements OnInit {
     } else if (this.post.loveIts < 0) {
       return 'lightcoral';
     } 
+  }
+
+  deletePost() {
+    this.postService.removePost(this.post);
+  }
+
+  likePost() {
+    this.post.loveIts +=1;
+    this.postService.updatePost(this.post);
+  }
+
+  unlikePost() {
+    this.post.loveIts -=1;
+    this.postService.updatePost(this.post);
   }
 
 }

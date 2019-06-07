@@ -16,9 +16,10 @@
     <mdb-card-text>
       {{ post.content }}
     </mdb-card-text>
-    <div class="flex-row">
-      <button type="button" mdbBtn color="light-green" mdbWavesEffect (click)="post.like();"><span>Love it</span><span><mdb-icon fas icon="heart">></mdb-icon></span></button>
-      <button type="button" mdbBtn color="danger" mdbWavesEffect (click)="post.unlike();"><span>Don't love it</span><span><mdb-icon fas icon="heart-broken"></mdb-icon></span></button>
+    <div class="flex-row btnZone">
+      <button type="button" mdbBtn color="success" mdbWavesEffect (click)="likePost();"><span>Love it</span><span><mdb-icon fas icon="heart">></mdb-icon></span></button>
+      <button type="button" mdbBtn color="danger" mdbWavesEffect (click)="unlikePost();"><span>Don't love it</span><span><mdb-icon fas icon="heart-broken"></mdb-icon></span></button>
+      <button class="deleteBtn" type="button" mdbBtn color="dark" mdbWavesEffect (click)="deletePost();"><span>Supprimer ce post</span><span><mdb-icon fas icon="heart-broken"></mdb-icon></span></button>
     </div>
   </mdb-card-body>
 </mdb-card>

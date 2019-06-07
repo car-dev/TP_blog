@@ -1,5 +1,10 @@
-  <app-post-list-item
-    *ngFor="let post of postsList"
-    [post]="post"
-  >
-  </app-post-list-item>
+<div class="errorPost" *ngIf="posts.length === 0">
+  <p class="badge badge-warning" >
+    Il n'y a aucun post sur le blog !
+  </p>
+</div>
+<app-post-list-item
+  *ngFor="let post of posts"
+  [post]="post"
+>
+</app-post-list-item>
