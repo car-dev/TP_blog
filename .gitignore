@@ -11,6 +11,10 @@
 # specific setting files
 /src/app/app.settings.ts
 
+
+# specific setting files
+tp-blog.zip
+
 # IDEs and editors
 /.idea
 .project
